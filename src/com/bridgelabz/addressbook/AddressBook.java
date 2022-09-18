@@ -19,6 +19,7 @@ public class AddressBook {
 			System.out.println("1.INSERT");
 			System.out.println("2.DISPLAY");
 			System.out.println("3.EDIT");
+			System.out.println("4.DELETE");
 			System.out.println("Enter your choice");
 			choice = sc.nextInt();
 

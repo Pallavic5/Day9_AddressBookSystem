@@ -1,6 +1,7 @@
 package com.bridgelabz.addressbook;
 
 import java.util.ArrayList;
+import java.util.ListIterator;
 import java.util.Scanner;
 
 public class AddressBook {
@@ -16,6 +17,7 @@ public class AddressBook {
 		do {
 			System.out.println("1.INSERT");
 			System.out.println("2.DISPLAY");
+			System.out.println("3.EDIT");
 			System.out.println("Enter your choice");
 			choice = sc.nextInt();
 
@@ -43,6 +45,53 @@ public class AddressBook {
 			case 2:
 				System.out.println(array);
 				break;
+				
+			case 3:
+				boolean found = false;
+				System.out.println("Enter first name of the person for update ");
+				String firstName1 = sc1.nextLine();
+				System.out.println("------------------------------------");
+
+				ListIterator<Contact> listIterator = array.listIterator();
+				
+				while (listIterator.hasNext()) {
+					contact = listIterator.next();
+
+					if (contact.getFirstName().equals(firstName1)) { 
+
+						System.out.print("Enter new first Name: ");
+						firstName1 = sc1.nextLine();
+						System.out.print("Enter new last Name: ");
+						lastName = sc1.nextLine();
+						System.out.print("Enter your new address: ");
+						address = sc1.nextLine();
+						System.out.print("Enter your new city: ");
+						city = sc1.nextLine();
+						System.out.print("Enter your state: ");
+						state = sc1.nextLine();
+						System.out.print("Enter zip code : ");
+						zipcode = sc.nextInt();
+						System.out.print("Enter phone number: ");
+						phoneNo = sc1.nextLine();
+						System.out.print("Enter your eMail ID: ");
+						email = sc1.nextLine();
+						listIterator.set(new Contact(firstName1, lastName, address, city, state, zipcode,
+								phoneNo, email));
+						found = true;
+					}
+				}
+				System.out.println("_____________________________________");
+
+				if (!found) {
+					System.out.println("Record not found");
+				} else {
+					System.out.println("Record is updated successfully");
+				}
+				System.out.println("_______________________________________");
+				break;
+			default:
+				System.out.println("default");
+
 			}
 		} while (choice != 0);
 		

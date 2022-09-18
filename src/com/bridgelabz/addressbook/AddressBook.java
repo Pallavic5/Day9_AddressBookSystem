@@ -1,6 +1,7 @@
 package com.bridgelabz.addressbook;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.ListIterator;
 import java.util.Scanner;
 
@@ -21,6 +22,7 @@ public class AddressBook {
 			System.out.println("Enter your choice");
 			choice = sc.nextInt();
 
+			Iterator<Contact> iterator;
 			switch (choice) {
 			case 1:
 				System.out.print("Enter First Name: ");
@@ -89,9 +91,32 @@ public class AddressBook {
 				}
 				System.out.println("_______________________________________");
 				break;
+				
+				
+			case 4:
+				found = false;
+				System.out.println("Enter first name of the person for delete ");
+				firstName1 = sc1.nextLine();
+				System.out.println("____________________________________");
+				iterator = array.iterator();
+				while (iterator.hasNext()) {
+					contact = iterator.next();
+					if (contact.getFirstName().equals(firstName1)) {
+						iterator.remove();
+						found = true;
+					}
+				}
+				System.out.println("____________________________________");
+				if (!found) {
+					System.out.println("Record not found");
+				} else {
+					System.out.println("Record is deleted successfully");
+				}
+				System.out.println("_____________________________________");
+				break;
+				
 			default:
 				System.out.println("default");
-
 			}
 		} while (choice != 0);
 		
